@@ -5,6 +5,23 @@ def at_least():
                 if len(word) >= 20:
                     print(word)
 
+def has_no_e(word):
+    '''
+    >>> has_no_e('texas')
+    False
+    
+    >>> has_no_e('longhorn')
+    True
+    
+    >>> has_no_e('UTEP')
+    False
+    '''
+    if 'e' in word.lower():
+        return False
+    else:
+        return True
+
+
 def no_e():
     count_e = 0
     count_word = 0
@@ -12,16 +29,52 @@ def no_e():
         for line in file:
             for word in line.split():
                 count_word += 1
-                for i in word:
-                    if i == 'e':
-                        count_e += 1
-    percent = round((count_e / count_word) * 100, 2)
-    
-    print(f'{percent}% of words contain "e"')
+                if has_no_e(word):
+                    count_e += 1
+    percent =(count_e / count_word) * 100
+    print(f'{percent:.3f}% of words contain "e"')
 
 def avoids(word, letters):
-    pass
+    '''
+    >>> avoids('Texas','tpr')
+    False
     
+    >>> avoids('Texas','bcd')
+    True
+    
+    >>> avoids('LONGHORNS','lgh')
+    False
+    
+    >>> avoids('longhorns','LGH')
+    False
+    
+    >>> avoids('flourbluff','  FL  ')
+    False
+    '''
+    for i in letters.lower():
+        if i in word.lower():
+            return False
+        else:
+            pass
+    else:
+        return True
 
+        
+def count_avoids():
+    lets = input('Give the exclusion letters: ')
+    word_count = 0
+    with open('words.txt') as files:
+        for line in files:
+            for word in line.split():
+                if avoids(word, lets):
+                    word_count += 1
+        print(word_count)
+        
+def uses_only(word, letters):
+    pass
+                
 if __name__ == "__main__":
-    no_e()
+    #import doctest
+    #doctest.testmod()
+    #print(avoids('longhorns','LGH'))
+    count_avoids()

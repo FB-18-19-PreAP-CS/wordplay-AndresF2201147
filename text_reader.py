@@ -86,9 +86,19 @@ def uses_only(word, letters):
             return False
     else:
         return True
+    
+def words_with_only(letters):
+    count_word = 0
+    with open('words.txt') as files:
+        for line in files:
+            for word in line.split():
+                if uses_only(word, letters):
+                    count_word += 1
+        print(count_word)
                 
 if __name__ == "__main__":
-    import doctest
-    doctest.testmod()
+    #import doctest
+    #doctest.testmod()
     #print(avoids('longhorns','LGH'))
     #print(uses_only('test', 'ets'))
+    words_with_only('aieou')

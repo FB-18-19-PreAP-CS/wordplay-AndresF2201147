@@ -96,9 +96,12 @@ def words_with_only(letters):
                     count_word += 1
         print(count_word)
                 
+def uses_all(word, letters):
+    pass
+
 if __name__ == "__main__":
     #import doctest
     #doctest.testmod()
     #print(avoids('longhorns','LGH'))
     #print(uses_only('test', 'ets'))
-    words_with_only('aieou')
+    #words_with_only('aieou')

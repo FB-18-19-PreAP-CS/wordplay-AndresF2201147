@@ -71,10 +71,24 @@ def count_avoids():
         print(word_count)
         
 def uses_only(word, letters):
-    pass
+    '''
+    >>> uses_only('test','ets')
+    True
+    
+    >>> uses_only('longhorns','zyxt')
+    False
+    
+    >>> uses_only('flourbluff','fule')
+    False
+    '''
+    for let in word:
+        if let not in letters:
+            return False
+    else:
+        return True
                 
 if __name__ == "__main__":
-    #import doctest
-    #doctest.testmod()
+    import doctest
+    doctest.testmod()
     #print(avoids('longhorns','LGH'))
-    count_avoids()
+    #print(uses_only('test', 'ets'))

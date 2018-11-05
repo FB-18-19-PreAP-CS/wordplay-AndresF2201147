@@ -130,7 +130,12 @@ def how_many_uses_all(letters):
                 if uses_all(word,letters):
                     count_word += 1
         print(count_word)
-        
+
+def is_abecedarian(word):
+    for let in word:
+        pass
+    # 'a' < 'b' returns true - so each letter is already assigned to a value :)
+
 
 if __name__ == "__main__":
     #import doctest

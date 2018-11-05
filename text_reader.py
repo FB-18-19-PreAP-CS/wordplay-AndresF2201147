@@ -80,6 +80,9 @@ def uses_only(word, letters):
     
     >>> uses_only('flourbluff','fule')
     False
+    
+    >>> uses_only('reproachful','acefhlo')
+    False
     '''
     for let in word:
         if let not in letters:
@@ -97,11 +100,44 @@ def words_with_only(letters):
         print(count_word)
                 
 def uses_all(word, letters):
-    pass
+    '''
+    >>> uses_all('hello','ha')
+    False
+    
+    >>> uses_all('hello','hl')
+    True
+    
+    >>> uses_all('Texas','t')
+    True
+    
+    >>> uses_all('Texas','tAx')
+    True
+    
+    >>> uses_all('NOveMber','noberz')
+    False
+    '''
+    for i in range(len(letters)):
+        if letters[i].lower() not in word.lower():
+            return False
+    else:
+        return True
+        
+def how_many_uses_all(letters):
+    count_word = 0
+    with open('words.txt') as files:
+        for line in files:
+            for word in line.split():
+                if uses_all(word,letters):
+                    count_word += 1
+        print(count_word)
+        
 
 if __name__ == "__main__":
     #import doctest
     #doctest.testmod()
     #print(avoids('longhorns','LGH'))
     #print(uses_only('test', 'ets'))
-    #words_with_only('aieou')
+    #count_avoids()
+    #print(uses_only('reproachful','acefhlo'))
+    #how_many_uses_all('aeiou')
+    
